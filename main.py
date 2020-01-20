@@ -81,6 +81,11 @@ window = Tk()
 window.title("Business Adam")
 window.geometry('800x600')
 
+# DEFINING FUNCTIONS #1
+
+def show_acc():
+	print("Error")
+
 # DEFINING GUI ELEMENTS
 
 logo = Label(window, text="$", fg="forest green", font=("Courier New", 60))
@@ -92,6 +97,9 @@ message_box = Text(window, width=40, height=24, wrap=WORD, fg="black", font=("Co
 message_box.config(state=DISABLED)
 
 request1 = Label(window, text="Please select an account number:", fg="black", font=("Courier New", 8))
+acc_choice = StringVar()
+acc_choice.set("001")
+dropdown_acc = OptionMenu(window, acc_choice, "001", "024", "070")
 button_summon = Button(window, text="Show", font=("Courier New", 10, "bold"))
 
 row_name0 = Label(window, text="Account", fg="black", font=("Courier New", 8))
@@ -106,7 +114,7 @@ row_name7 = Label(window, text="Deposit", fg="black", font=("Courier New", 8))
 row_name8 = Label(window, text="Balance", fg="black", font=("Courier New", 8))
 row_name9 = Label(window, text="Overdue", fg="black", font=("Courier New", 8))
 
-# DEFINING FUNCTIONS
+# DEFINING FUNCTIONS #2
 
 def write(string):
     message_box.config(state=NORMAL)
@@ -121,7 +129,8 @@ title.grid(row=0, column=1, columnspan=6)
 undertitle.grid(row=1, column=1, columnspan=6)
 copyright.grid(row=2, column=1, columnspan=6)
 
-request1.grid(row=3, column=1, columnspan=3)
+request1.grid(row=3, column=0, columnspan=3)
+dropdown_acc.grid(row=3, column=3)
 button_summon.grid(row=3, column=5, columnspan=3)
 
 row_name0.grid(row=4, column=0)
@@ -138,5 +147,7 @@ row_name9.grid(row=8, column=2)
 
 message_box.grid(row=5, rowspan=5, column=5, columnspan=3, pady=20)
 write("Welcome to HeiFlow 2.0.")
+
+# COMMENCING LOOP
  
 window.mainloop()
