@@ -79,48 +79,90 @@ Acc070.add_ovd(float(-1620.00))
 
 window = Tk()
 window.title("Business Adam")
-window.geometry('800x600')
+window.geometry('450x600')
 
-# DEFINING FUNCTIONS #1
-
-def show_acc():
-	print("Error")
-
-# DEFINING GUI ELEMENTS
+# DEFINING GUI ELEMENTS #1
 
 logo = Label(window, text="$", fg="forest green", font=("Courier New", 60))
 title = Label(window, text="Business Adam", fg="forest green", font=("Courier New", 20, "bold"))
 undertitle = Label(window, text="Contractor Management System", fg="black", font=("Courier New", 8))
 copyright = Label(window, text="©2020 Sankti", fg="grey", font=("Courier New", 8))
 
-message_box = Text(window, width=40, height=24, wrap=WORD, fg="black", font=("Courier New", 10))
+message_box = Text(window, width=60, height=32, wrap=WORD, fg="black", font=("Courier New", 8))
 message_box.config(state=DISABLED)
 
 request1 = Label(window, text="Please select an account number:", fg="black", font=("Courier New", 8))
 acc_choice = StringVar()
 acc_choice.set("001")
-dropdown_acc = OptionMenu(window, acc_choice, "001", "024", "070")
-button_summon = Button(window, text="Show", font=("Courier New", 10, "bold"))
 
-row_name0 = Label(window, text="Account", fg="black", font=("Courier New", 8))
-row_name1 = Label(window, text="Name", fg="black", font=("Courier New", 8))
-row_name2 = Label(window, text="Legal Entity", fg="black", font=("Courier New", 8))
-row_name3 = Label(window, text="Region", fg="black", font=("Courier New", 8))
-row_name4 = Label(window, text="Country", fg="black", font=("Courier New", 8))
-
-row_name5 = Label(window, text="Acc Status", fg="black", font=("Courier New", 8))
-row_name6 = Label(window, text="LE Status", fg="black", font=("Courier New", 8))
-row_name7 = Label(window, text="Deposit", fg="black", font=("Courier New", 8))
-row_name8 = Label(window, text="Balance", fg="black", font=("Courier New", 8))
-row_name9 = Label(window, text="Overdue", fg="black", font=("Courier New", 8))
-
-# DEFINING FUNCTIONS #2
+# DEFINING FUNCTIONS
 
 def write(string):
     message_box.config(state=NORMAL)
     message_box.insert("end", string)
     message_box.see("end")
     message_box.config(state=DISABLED)
+
+def show_acc():
+	acc_select = acc_choice.get()
+	
+	if acc_select == "001":
+		write("\n" + "\n" +
+		"Account no.:     " + str(Acc001.accno) + "\n" +
+		"Name:            " + str(Acc001.accname) + "\n" +
+		"Legal Entity:    " + str(Acc001.le) + "\n" +
+		"Region:          " + str(Acc001.reg) + "\n" +
+		"Country:         " + str(Acc001.cnt) + "\n" +
+		"\n" +
+		" - Master Sheet - " + "\n" +
+		"Account status:  " + str(Acc001.accst) + "\n" +
+		"LE status:       " + str(Acc001.lest) + "\n" +
+		"\n" +
+		" - Credit Control - " + "\n" +
+		"Deposit value:   " + str(Acc001.depo) + "\n" +
+		"Account Balance: " + str(Acc001.bal) + "\n" +
+		"Overdue value:   " + str(Acc001.ovd))
+		
+	elif acc_select == "024":
+		write("\n" + "\n" +
+		"Account no.:     " + str(Acc024.accno) + "\n" +
+		"Name:            " + str(Acc024.accname) + "\n" +
+		"Legal Entity:    " + str(Acc024.le) + "\n" +
+		"Region:          " + str(Acc024.reg) + "\n" +
+		"Country:         " + str(Acc024.cnt) + "\n" +
+		"\n" +
+		" - Master Sheet - " + "\n" +
+		"Account status:  " + str(Acc024.accst) + "\n" +
+		"LE status:       " + str(Acc024.lest) + "\n" +
+		"\n" +
+		" - Credit Control - " + "\n" +
+		"Deposit value:   " + str(Acc024.depo) + "\n" +
+		"Account Balance: " + str(Acc024.bal) + "\n" +
+		"Overdue value:   " + str(Acc024.ovd))
+
+	elif acc_select == "070":
+		write("\n" + "\n" +
+		"Account no.:     " + str(Acc070.accno) + "\n" +
+		"Name:            " + str(Acc070.accname) + "\n" +
+		"Legal Entity:    " + str(Acc070.le) + "\n" +
+		"Region:          " + str(Acc070.reg) + "\n" +
+		"Country:         " + str(Acc070.cnt) + "\n" +
+		"\n" +
+		" - Master Sheet - " + "\n" +
+		"Account status:  " + str(Acc070.accst) + "\n" +
+		"LE status:       " + str(Acc070.lest) + "\n" +
+		"\n" +
+		" - Credit Control - " + "\n" +
+		"Deposit value:   " + str(Acc070.depo) + "\n" +
+		"Account Balance: " + str(Acc070.bal) + "\n" +
+		"Overdue value:   " + str(Acc070.ovd))
+	else:
+		write("\n" + "\n" + "Error")
+	
+# DEFINING GUI ELEMENTS #2
+
+dropdown_acc = OptionMenu(window, acc_choice, "001", "024", "070")
+button_summon = Button(window, text="Show", font=("Courier New", 10, "bold"), command=lambda: show_acc())
 
 # LAYOUT SETUP
 	
@@ -129,23 +171,11 @@ title.grid(row=0, column=1, columnspan=6)
 undertitle.grid(row=1, column=1, columnspan=6)
 copyright.grid(row=2, column=1, columnspan=6)
 
-request1.grid(row=3, column=0, columnspan=3)
+request1.grid(row=3, column=0, columnspan=3, padx=10)
 dropdown_acc.grid(row=3, column=3)
 button_summon.grid(row=3, column=5, columnspan=3)
 
-row_name0.grid(row=4, column=0)
-row_name1.grid(row=5, column=0)
-row_name2.grid(row=6, column=0)
-row_name3.grid(row=7, column=0)
-row_name4.grid(row=8, column=0)
-
-row_name5.grid(row=4, column=2)
-row_name6.grid(row=5, column=2)
-row_name7.grid(row=6, column=2)
-row_name8.grid(row=7, column=2)
-row_name9.grid(row=8, column=2)
-
-message_box.grid(row=5, rowspan=5, column=5, columnspan=3, pady=20)
+message_box.grid(row=5, rowspan=9, column=0, columnspan=7, padx=10)
 write("Welcome to HeiFlow 2.0.")
 
 # COMMENCING LOOP
